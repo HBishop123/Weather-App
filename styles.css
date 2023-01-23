@@ -1,0 +1,13 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    height: 100vh;
+    width: 100vw;
+    background-image: url('pexels-pixabay-531756.jpg');
+    background-size: cover;
+    background-position: center center;
+}
