@@ -85,7 +85,8 @@ h2 {
 }
 
 #error {
-  width: 600px;
+  width: 500px;
+  font-size: 0.5em;
 }
 
 form{

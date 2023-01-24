@@ -14,7 +14,7 @@ console.log(weatherData);
 // Fetch request for weather Data
 const fetchRequest = function () {
   fetch(
-    `http://api.openweathermap.org/data/2.5/weather?q=${weatherData.place}&appid=01140b4c9927771a31d8304a92387fdb`,
+    `https://api.openweathermap.org/data/2.5/weather?q=${weatherData.place}&appid=01140b4c9927771a31d8304a92387fdb`,
     { mode: "cors" }
   )
     .then((response) => response.json())
@@ -34,7 +34,7 @@ const fetchRequest = function () {
     .catch(() => {
       const errorMessage = document.getElementById("error");
       errorMessage.innerHTML =
-        "Could Not Find Location. Please check spelling or try a different location";
+        "Could not find location. Please check your spelling, or try a different location";
       setTimeout(() => {
         errorMessage.innerHTML = "";
       }, 5000);
