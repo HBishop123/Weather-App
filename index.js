@@ -14,7 +14,7 @@ console.log(weatherData);
 // Fetch request for weather Data
 const fetchRequest = function () {
   fetch(
-    `http://api.openweathermap.org/data/2.5/weather?q=${weatherData.place},uk&appid=01140b4c9927771a31d8304a92387fdb`,
+    `http://api.openweathermap.org/data/2.5/weather?q=${weatherData.place}&appid=01140b4c9927771a31d8304a92387fdb`,
     { mode: "cors" }
   )
     .then((response) => response.json())
