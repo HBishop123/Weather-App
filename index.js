@@ -28,10 +28,19 @@ const fetchRequest = function () {
       weatherData.feelsLike = parseFloat(data.main.feels_like - 273.15).toFixed(
         2
       );
-      weatherData.humidity = data.main.humidity + '%';
-      weatherData.chanceOfRain = "Chance of Rain" + '';
-      weatherData.windSpeed = data.wind.speed + 'm/s';
+      weatherData.humidity = data.main.humidity + "%";
+      weatherData.chanceOfRain = "Chance of Rain" + "";
+      weatherData.windSpeed = data.wind.speed + "m/s";
       pushInformationToPage.pushInfo();
+    })
+    .catch(() => {
+      const errorMessage = document.createElement("p");
+      errorMessage.innerHTML =
+        "Could Not Find Location. Please check spelling or try a different location";
+      document.querySelector(".left-side").appendChild(errorMessage);
+      setTimeout(() => {
+        errorMessage.innerHTML = "";
+      }, 5000);
     });
 };
 fetchRequest();
