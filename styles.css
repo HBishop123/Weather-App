@@ -45,12 +45,12 @@ main {
   justify-content: space-between;
 }
 
-.left-side{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.left-side {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-#error{
-    width: 250px;
+#error {
+  width: 250px;
 }
