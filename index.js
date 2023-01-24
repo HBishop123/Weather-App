@@ -95,8 +95,8 @@ const changeDegreesValue = {
   swapDegrees: function () {
     const temperature = document.getElementById("temperature");
     const temperatureValue = temperature.innerHTML;
-    // const feelsLike = document.getElementById('feels-like')
-    // const feelsLikeValue = feelsLike.innerHTML
+    const feelsLike = document.getElementById("feels-like");
+    const feelsLikeValue = feelsLike.innerHTML;
 
     const removeCelsiusUnit = temperatureValue.replace(/[^0-9.-]+/g, "");
     const fahrenheitValue = (removeCelsiusUnit * 9) / 5 + 32;
@@ -104,19 +104,43 @@ const changeDegreesValue = {
     const removeFahrenheitUnit = temperatureValue.replace(/[^0-9.-]+/g, "");
     const celsiusValue = ((removeFahrenheitUnit - 32) * 5) / 9;
 
+    const removeCelsiusUnitForFeelsLike = feelsLikeValue.replace(
+      /[^0-9.-]+/g,
+      ""
+    );
+    const fahrenheitValueForFeelsLike =
+      (removeCelsiusUnitForFeelsLike * 9) / 5 + 32;
+
+    const removeFahrenheitUnitForFeelsLike = feelsLikeValue.replace(
+      /[^0-9.-]+/g,
+      ""
+    );
+    const celsiusValueForFeelsLike =
+      ((removeFahrenheitUnitForFeelsLike - 32) * 5) / 9;
+
     if (temperatureValue.includes("°C")) {
       temperature.innerHTML = fahrenheitValue.toFixed(2) + "°F";
+      feelsLike.innerHTML = fahrenheitValueForFeelsLike.toFixed(2) + "°F";
     } else if (temperatureValue.includes("°F")) {
       temperature.innerHTML = celsiusValue.toFixed(2) + "°C";
+      feelsLike.innerHTML = celsiusValueForFeelsLike.toFixed(2) + "°C";
     }
   },
 
-  attachEventListener: function () {
+  attachEventListenerTemp: function () {
     document.addEventListener("DOMContentLoaded", () => {
       document
         .getElementById("temperature")
         .addEventListener("click", this.swapDegrees);
     });
   },
+  attachEventListenerFeels: function () {
+    document.addEventListener("DOMContentLoaded", () => {
+      document
+        .getElementById("feels-like")
+        .addEventListener("click", this.swapDegrees);
+    });
+  },
 };
-changeDegreesValue.attachEventListener();
+changeDegreesValue.attachEventListenerTemp();
+changeDegreesValue.attachEventListenerFeels();
