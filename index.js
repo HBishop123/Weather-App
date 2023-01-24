@@ -21,15 +21,13 @@ const fetchRequest = function () {
     .then((data) => {
       console.log(data);
       weatherData.place = data.name;
-      weatherData.weather = data.weather[0].description;
-      weatherData.temperature = parseFloat(
-        (data.main.temp - 273.15).toFixed(2)
-      );
-      weatherData.feelsLike = parseFloat(data.main.feels_like - 273.15).toFixed(
-        2
-      );
+      weatherData.weather = data.weather[0].description.toUpperCase();
+      weatherData.temperature =
+        parseFloat((data.main.temp - 273.15).toFixed(2)) + "°C";
+      weatherData.feelsLike =
+        parseFloat(data.main.feels_like - 273.15).toFixed(2) + "°C";
       weatherData.humidity = data.main.humidity + "%";
-      weatherData.chanceOfRain = "Chance of Rain" + "";
+      weatherData.chanceOfRain = "0%";
       weatherData.windSpeed = data.wind.speed + "m/s";
       pushInformationToPage.pushInfo();
     })

@@ -1,9 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
+  font-size: 40px;
 }
 
 body {
@@ -23,28 +24,71 @@ main {
   padding: 20px;
 }
 
+.describer {
+  font-size: 0.5em;
+}
+
 .top-layer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+}
+
+.right-side-top {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+h2 {
+  font-size: 1.2em;
 }
 
 .second-layer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+}
+
+.right-side-second {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 40px;
+  align-items: center;
 }
 
 .third-layer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+}
+
+.right-side-third {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 40px;
+  align-items: center;
 }
 
 .fourth-layer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+}
+
+.right-side-fourth {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 40px;
+  align-items: center;
 }
 
 .left-side {
@@ -54,5 +98,5 @@ main {
 }
 
 #error {
-  width: 250px;
+  width: 600px;
 }
