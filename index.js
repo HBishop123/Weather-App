@@ -80,7 +80,6 @@ const getInputData = {
     fetchRequest();
     return this.location;
   },
-
   attachEventListener: function () {
     document.addEventListener("DOMContentLoaded", () => {
       document
@@ -126,7 +125,6 @@ const changeDegreesValue = {
       feelsLike.innerHTML = celsiusValueForFeelsLike.toFixed(2) + "°C";
     }
   },
-
   attachEventListenerTemp: function () {
     document.addEventListener("DOMContentLoaded", () => {
       document
