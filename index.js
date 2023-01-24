@@ -34,10 +34,9 @@ const fetchRequest = function () {
       pushInformationToPage.pushInfo();
     })
     .catch(() => {
-      const errorMessage = document.createElement("p");
+      const errorMessage = document.getElementById("error");
       errorMessage.innerHTML =
         "Could Not Find Location. Please check spelling or try a different location";
-      document.querySelector(".left-side").appendChild(errorMessage);
       setTimeout(() => {
         errorMessage.innerHTML = "";
       }, 5000);

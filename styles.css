@@ -44,3 +44,13 @@ main {
   flex-direction: row;
   justify-content: space-between;
 }
+
+.left-side{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#error{
+    width: 250px;
+}
