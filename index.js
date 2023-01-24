@@ -90,3 +90,33 @@ const getInputData = {
   },
 };
 getInputData.attachEventListener();
+
+const changeDegreesValue = {
+  swapDegrees: function () {
+    const temperature = document.getElementById("temperature");
+    const temperatureValue = temperature.innerHTML;
+    // const feelsLike = document.getElementById('feels-like')
+    // const feelsLikeValue = feelsLike.innerHTML
+
+    const removeCelsiusUnit = temperatureValue.replace(/[^0-9.-]+/g, "");
+    const fahrenheitValue = (removeCelsiusUnit * 9) / 5 + 32;
+
+    const removeFahrenheitUnit = temperatureValue.replace(/[^0-9.-]+/g, "");
+    const celsiusValue = ((removeFahrenheitUnit - 32) * 5) / 9;
+
+    if (temperatureValue.includes("°C")) {
+      temperature.innerHTML = fahrenheitValue.toFixed(2) + "°F";
+    } else if (temperatureValue.includes("°F")) {
+      temperature.innerHTML = celsiusValue.toFixed(2) + "°C";
+    }
+  },
+
+  attachEventListener: function () {
+    document.addEventListener("DOMContentLoaded", () => {
+      document
+        .getElementById("temperature")
+        .addEventListener("click", this.swapDegrees);
+    });
+  },
+};
+changeDegreesValue.attachEventListener();
