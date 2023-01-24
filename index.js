@@ -22,11 +22,15 @@ const fetchRequest = function () {
       console.log(data);
       weatherData.place = data.name;
       weatherData.weather = data.weather[0].description;
-      weatherData.temperature = data.main.temp;
-      weatherData.feelsLike = data.main.feels_like;
-      weatherData.humidity = data.main.humidity;
-      weatherData.chanceOfRain = "Chance of Rain";
-      weatherData.windSpeed = data.wind.speed;
+      weatherData.temperature = parseFloat(
+        (data.main.temp - 273.15).toFixed(2)
+      );
+      weatherData.feelsLike = parseFloat(data.main.feels_like - 273.15).toFixed(
+        2
+      );
+      weatherData.humidity = data.main.humidity + '%';
+      weatherData.chanceOfRain = "Chance of Rain" + '';
+      weatherData.windSpeed = data.wind.speed + 'm/s';
       pushInformationToPage.pushInfo();
     });
 };
