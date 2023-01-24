@@ -99,6 +99,7 @@ form > input {
   border-bottom: 2px solid black;
   font-size: 0.7em;
   outline: none;
+  width: 70%;
 }
 
 input::placeholder {
@@ -108,4 +109,17 @@ input::placeholder {
 button{
     height: 25px;
     width: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    outline: none;
+    border-right: 2px solid black;
+    margin-top: 10px;
+    transform: rotate(90deg);
+}
+
+button:hover{
+    cursor: pointer;
 }
