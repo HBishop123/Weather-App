@@ -19,20 +19,26 @@ main {
   height: 100vh;
   width: 100vw;
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  flex-direction: row;
   padding: 20px;
 }
 
-.describer {
-  font-size: 0.5em;
+.left-side {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
 }
 
-.top-layer {
+.right-side {
+  width: 50%;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.describer {
+  font-size: 0.5em;
 }
 
 .right-side-top {
@@ -40,17 +46,12 @@ main {
   flex-direction: column;
   gap: 10px;
   align-items: center;
+  width: 25%;
+  justify-content: center;
 }
 
 h2 {
   font-size: 1.2em;
-}
-
-.second-layer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .right-side-second {
@@ -59,13 +60,8 @@ h2 {
   gap: 10px;
   padding-top: 40px;
   align-items: center;
-}
-
-.third-layer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  width: 25%;
+  justify-content: center;
 }
 
 .right-side-third {
@@ -74,13 +70,8 @@ h2 {
   gap: 10px;
   padding-top: 40px;
   align-items: center;
-}
-
-.fourth-layer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  width: 25%;
+  justify-content: center;
 }
 
 .right-side-fourth {
@@ -89,12 +80,8 @@ h2 {
   gap: 10px;
   padding-top: 40px;
   align-items: center;
-}
-
-.left-side {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  width: 25%;
+  justify-content: center;
 }
 
 #error {

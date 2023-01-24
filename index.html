@@ -10,38 +10,28 @@
   </head>
   <body>
     <main>
-      <div class="top-layer">
+      <div class="left-side">
         <h2>Cloud Data</h2>
+        <p id="location"></p>
+        <p id="temperature"></p>
+        <form>
+          <input type="text" id="search-bar" placeholder="Search Location..." />
+          <button id="submit" type="submit"></button>
+        </form>
+        <p id="error"></p>
+      </div>
+      <div class="right-side">
         <div class="right-side-top">
           <p class="describer">Feels like</p>
           <p id="feels-like"></p>
         </div>
-      </div>
-      <div class="second-layer">
-        <p id="location"></p>
         <div class="right-side-second">
           <p class="describer">Humidity</p>
           <p id="humidity"></p>
         </div>
-      </div>
-      <div class="third-layer">
-        <p id="temperature"></p>
         <div class="right-side-third">
           <p class="describer">Chance of Rain</p>
           <p id="chance-rain"></p>
-        </div>
-      </div>
-      <div class="fourth-layer">
-        <div class="left-side">
-          <form>
-            <input
-              type="text"
-              id="search-bar"
-              placeholder="Search Location..."
-            />
-            <button id="submit" type="submit"></button>
-          </form>
-          <p id="error"></p>
         </div>
         <div class="right-side-fourth">
           <p class="describer">Wind Speed</p>
