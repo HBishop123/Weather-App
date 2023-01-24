@@ -21,15 +21,41 @@ const fetchRequest = function () {
     .then((data) => {
       console.log(data);
       weatherData.place = data.name;
-      weatherData.weather = data.weather.map((item) => item.description);
+      weatherData.weather = data.weather[0].description;
       weatherData.temperature = data.main.temp;
       weatherData.feelsLike = data.main.feels_like;
       weatherData.humidity = data.main.humidity;
-      (weatherData.chanceOfRain = "not available yet"),
-        (weatherData.windSpeed = data.wind.speed);
+      weatherData.chanceOfRain = "Chance of Rain";
+      weatherData.windSpeed = data.wind.speed;
+      pushInformationToPage.pushInfo();
     });
 };
 fetchRequest();
+
+const pushInformationToPage = {
+  pushInfo: function () {
+    const cloudData = document.querySelector("h2");
+    cloudData.innerHTML = weatherData.weather;
+
+    const locationData = document.getElementById("location");
+    locationData.innerHTML = weatherData.place;
+
+    const feelsLike = document.getElementById("feels-like");
+    feelsLike.innerHTML = weatherData.feelsLike;
+
+    const humidity = document.getElementById("humidity");
+    humidity.innerHTML = weatherData.humidity;
+
+    const temperature = document.getElementById("temperature");
+    temperature.innerHTML = weatherData.temperature;
+
+    const chanceOfRain = document.getElementById("chance-rain");
+    chanceOfRain.innerHTML = weatherData.chanceOfRain;
+
+    const windChance = document.getElementById("wind");
+    windChance.innerHTML = weatherData.windSpeed;
+  },
+};
 
 // grabs input Data and changes the locations.place
 const getInputData = {
