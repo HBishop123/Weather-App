@@ -31,6 +31,22 @@ main {
   align-items: flex-start;
 }
 
+.temperature-and-logo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+#swap{
+    height: 30px;
+    width: 30px;
+}
+
+#swap:hover{
+    cursor: pointer;
+}
+
 .right-side {
   width: 50%;
   display: flex;
