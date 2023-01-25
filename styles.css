@@ -31,11 +31,15 @@ main {
   align-items: flex-start;
 }
 
-.temperature-and-logo {
+.temperature-and-advice {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 10px;
+}
+
+#advice{
+  font-size: 0.4em;
 }
 
 #swap {

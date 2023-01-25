@@ -170,3 +170,12 @@ const changeDegreesValue = {
 };
 changeDegreesValue.attachEventListenerTemp();
 changeDegreesValue.attachEventListenerFeels();
+
+const helperMessageAppear = () => {
+  document.getElementById("advice").innerHTML = `  -- Click Me To Change`;
+};
+const helperMessageRemove = () => {
+  document.getElementById("advice").innerHTML = "";
+};
+const interval = setInterval(helperMessageAppear, 5000);
+const removeInterval = setInterval(helperMessageRemove, 10000);
