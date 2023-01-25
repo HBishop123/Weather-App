@@ -47,6 +47,10 @@ main {
   cursor: pointer;
 }
 
+#date, #time{
+  font-size: 0.6em;
+}
+
 .right-side {
   width: 50%;
   display: flex;

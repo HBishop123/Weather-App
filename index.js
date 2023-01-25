@@ -7,9 +7,9 @@ weatherData = {
   humidity: undefined,
   chanceOfRain: undefined,
   windSpeed: undefined,
+  date: undefined,
+  time: undefined,
 };
-
-console.log(weatherData);
 
 // Fetch request for weather Data
 const fetchRequest = function () {
@@ -29,6 +29,16 @@ const fetchRequest = function () {
       weatherData.humidity = data.main.humidity + "%";
       weatherData.chanceOfRain = "0%";
       weatherData.windSpeed = data.wind.speed + "m/s";
+
+      let currentTime = new Date();
+      currentTime.setTime(currentTime.getTime() + data.timezone * 1000);
+      let formattedDate = currentTime.toLocaleDateString();
+      let formattedTime = currentTime.toLocaleString(undefined, {
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+      weatherData.date = `${formattedDate}`;
+      weatherData.time = `${formattedTime}`;
       pushInformationToPage.pushInfo();
     })
     .catch(() => {
@@ -41,6 +51,14 @@ const fetchRequest = function () {
     });
 };
 fetchRequest();
+
+// fetch(
+//   `https://api.openweathermap.org/data/2.5/forecast?q=${weatherData.place}&appid=01140b4c9927771a31d8304a92387fdb`,
+//   { mode: "cors" }
+// ).then((response) => response.json())
+// .then((data) => {
+//   console.log(data)
+// })
 
 const pushInformationToPage = {
   pushInfo: function () {
@@ -64,6 +82,12 @@ const pushInformationToPage = {
 
     const windChance = document.getElementById("wind");
     windChance.innerHTML = weatherData.windSpeed;
+
+    const date = document.getElementById("date");
+    date.innerHTML = weatherData.date;
+
+    const time = document.getElementById("time");
+    time.innerHTML = weatherData.time;
   },
 };
 
@@ -73,7 +97,6 @@ const getInputData = {
     e.preventDefault();
 
     const chosenLocation = document.getElementById("search-bar").value;
-    console.log(chosenLocation);
 
     weatherData.place = chosenLocation;
     document.forms[0].reset();
