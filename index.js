@@ -172,7 +172,7 @@ changeDegreesValue.attachEventListenerTemp();
 changeDegreesValue.attachEventListenerFeels();
 
 const helperMessageAppear = () => {
-  document.getElementById("advice").innerHTML = `  -- Click Me To Change`;
+  document.getElementById("advice").innerHTML = `- Click To Change`;
 };
 const helperMessageRemove = () => {
   document.getElementById("advice").innerHTML = "";
