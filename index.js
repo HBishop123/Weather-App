@@ -10,7 +10,7 @@ weatherData = {
   date: undefined,
   time: undefined,
 };
-
+console.log(weatherData);
 // Fetch request for weather Data
 const fetchRequest = function () {
   fetch(
@@ -27,7 +27,6 @@ const fetchRequest = function () {
       weatherData.feelsLike =
         parseFloat(data.main.feels_like - 273.15).toFixed(2) + "°C";
       weatherData.humidity = data.main.humidity + "%";
-      weatherData.chanceOfRain = "0%";
       weatherData.windSpeed = data.wind.speed + "m/s";
 
       let currentTime = new Date();
@@ -40,6 +39,15 @@ const fetchRequest = function () {
       weatherData.date = `${formattedDate}`;
       weatherData.time = `${formattedTime}`;
       pushInformationToPage.pushInfo();
+      fetch(
+        `https://api.openweathermap.org/data/2.5/forecast?q=${weatherData.place}&appid=01140b4c9927771a31d8304a92387fdb`,
+        { mode: "cors" }
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          weatherData.chanceOfRain = data.list[0].pop + "%";
+          pushInformationToPage.pushInfo();
+        });
     })
     .catch(() => {
       const errorMessage = document.getElementById("error");
@@ -164,11 +172,3 @@ const changeDegreesValue = {
 };
 changeDegreesValue.attachEventListenerTemp();
 changeDegreesValue.attachEventListenerFeels();
-
-// fetch(
-//   `https://api.openweathermap.org/data/2.5/forecast?q=${weatherData.place}&appid=01140b4c9927771a31d8304a92387fdb`,
-//   { mode: "cors" }
-// ).then((response) => response.json())
-// .then((data) => {
-//   console.log(data)
-// })
