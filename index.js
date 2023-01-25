@@ -50,16 +50,14 @@ const fetchRequest = function () {
       }, 5000);
     });
 };
+
+// calls the fetchRequest function when page launched, as well as every 30 seconds
 fetchRequest();
+setInterval(() => {
+  fetchRequest();
+}, 30000);
 
-// fetch(
-//   `https://api.openweathermap.org/data/2.5/forecast?q=${weatherData.place}&appid=01140b4c9927771a31d8304a92387fdb`,
-//   { mode: "cors" }
-// ).then((response) => response.json())
-// .then((data) => {
-//   console.log(data)
-// })
-
+// takes the information from the weatherData objecft and appends it to elements innerHTML
 const pushInformationToPage = {
   pushInfo: function () {
     const cloudData = document.querySelector("h2");
@@ -91,7 +89,7 @@ const pushInformationToPage = {
   },
 };
 
-// grabs input Data and changes the locations.place
+// grabs input data from the search bar, changes the api request location and calls fetchRequest()
 const getInputData = {
   grabInputData: function (e) {
     e.preventDefault();
@@ -113,6 +111,7 @@ const getInputData = {
 };
 getInputData.attachEventListener();
 
+// function to allow clicking of temperature, removes the units and calculates for fahrenheit and celsius, and adding units again
 const changeDegreesValue = {
   swapDegrees: function () {
     const temperature = document.getElementById("temperature");
@@ -165,3 +164,11 @@ const changeDegreesValue = {
 };
 changeDegreesValue.attachEventListenerTemp();
 changeDegreesValue.attachEventListenerFeels();
+
+// fetch(
+//   `https://api.openweathermap.org/data/2.5/forecast?q=${weatherData.place}&appid=01140b4c9927771a31d8304a92387fdb`,
+//   { mode: "cors" }
+// ).then((response) => response.json())
+// .then((data) => {
+//   console.log(data)
+// })
