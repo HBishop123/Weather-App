@@ -10,7 +10,6 @@ weatherData = {
   date: undefined,
   time: undefined,
 };
-console.log(weatherData);
 // Fetch request for weather Data
 const fetchRequest = function () {
   fetch(
@@ -19,7 +18,6 @@ const fetchRequest = function () {
   )
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       weatherData.place = data.name;
       weatherData.weather = data.weather[0].description.toUpperCase();
       weatherData.temperature =
