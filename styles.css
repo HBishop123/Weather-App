@@ -38,8 +38,24 @@ main {
   gap: 10px;
 }
 
-#advice{
+#advice {
   font-size: 0.6em;
+  width: 500px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 2s;
+  animation-delay: 5s;
 }
 
 #swap {
@@ -51,7 +67,8 @@ main {
   cursor: pointer;
 }
 
-#date, #time{
+#date,
+#time {
   font-size: 0.6em;
 }
 
