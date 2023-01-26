@@ -25,7 +25,8 @@ const backgroundGenerator = function () {
       "url('images/pexels-francesco-ungaro-281260.jpg')";
   } else if (
     weatherData.weather === "SHOWER RAIN" ||
-    weatherData.weather === "RAIN"
+    weatherData.weather === "RAIN" ||
+    weatherData.weather === "DRIZZLE"
   ) {
     document.querySelector("body").style.backgroundImage =
       "url('images/pexels-josh-sorenson-1154510.jpg')";
@@ -75,7 +76,6 @@ const fetchRequest = function () {
       )
         .then((response) => response.json())
         .then((data) => {
-          console.log(data)
           weatherData.chanceOfRain = data.list[0].pop + "%";
           pushInformationToPage.pushInfo();
         });
@@ -89,6 +89,7 @@ const fetchRequest = function () {
       }, 5000);
     });
 };
+
 
 // calls the fetchRequest function when page launched, as well as every 30 seconds
 fetchRequest();
@@ -128,6 +129,58 @@ const pushInformationToPage = {
   },
 };
 
+dailyData = {
+  threeHourTemp: undefined,
+  sixHourTemp: undefined,
+  nineHourTemp: undefined,
+  twelveHourTemp: undefined,
+};
+console.log(dailyData);
+
+
+const fetchDailyData = function () {
+  fetch(
+    `https://api.openweathermap.org/data/2.5/forecast?q=${weatherData.place}&appid=01140b4c9927771a31d8304a92387fdb`,
+    { mode: "cors" }
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data)
+      dailyData.threeHourTemp = data.list[0].main.temp;
+      dailyData.sixHourTemp = data.list[1].main.temp;
+      dailyData.nineHourTemp = data.list[2].main.temp;
+      dailyData.twelveHourTemp = data.list[3].main.temp;
+      pushDailyDataToPage.pushInfo()
+    })
+    .catch(() => {
+      const errorMessage = document.getElementById("error");
+      errorMessage.innerHTML =
+        "Could not find location. Please check your spelling, or try a different location";
+      setTimeout(() => {
+        errorMessage.innerHTML = "";
+      }, 5000);
+    });
+};
+fetchDailyData()
+
+const pushDailyDataToPage = {
+  pushInfo: function () {
+    const threeHourTemp = document.getElementById('temp1')
+    threeHourTemp.innerHTML = dailyData.threeHourTemp
+
+    const sixHourTemp = document.getElementById('temp2')
+    sixHourTemp.innerHTML = dailyData.sixHourTemp
+
+    const nineHourTemp = document.getElementById('temp3')
+    nineHourTemp.innerHTML = dailyData.nineHourTemp
+
+    const twelveHourTemp = document.getElementById('temp4')
+    twelveHourTemp.innerHTML = dailyData.twelveHourTemp
+  },
+};
+
+
+
 // grabs input data from the search bar, changes the api request location and calls fetchRequest()
 const getInputData = {
   grabInputData: function (e) {
@@ -138,6 +191,7 @@ const getInputData = {
     weatherData.place = chosenLocation;
     document.forms[0].reset();
     fetchRequest();
+    fetchDailyData()
     return this.location;
   },
   attachEventListener: function () {
