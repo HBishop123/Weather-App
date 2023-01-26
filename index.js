@@ -18,8 +18,9 @@ const fetchRequest = function () {
   )
     .then((response) => response.json())
     .then((data) => {
+      console.log(data);
       weatherData.place = data.name;
-      weatherData.weather = data.weather[0].description.toUpperCase();
+      weatherData.weather = data.weather[0].main.toUpperCase();
       weatherData.temperature =
         parseFloat((data.main.temp - 273.15).toFixed(2)) + "°C";
       weatherData.feelsLike =
@@ -179,3 +180,14 @@ const helperMessageRemove = () => {
 };
 const interval = setInterval(helperMessageAppear, 5000);
 const removeInterval = setInterval(helperMessageRemove, 15000);
+
+const backgroundGenerator = function () {
+  if (
+    weatherData.weather === "FEW CLOUDS" ||
+    weatherData.weather === "SCATTERED CLOUDS" ||
+    weatherData.weather === "BROKEN CLOUDS"
+  ) {
+    document.querySelector("body").style.backgroundImage =
+      "url('images/pexels-pixabay-531756.jpg')";
+  }else if(weatherData.weather === "CLEAR SKY")
+};
