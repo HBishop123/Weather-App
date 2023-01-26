@@ -10,6 +10,37 @@ weatherData = {
   date: undefined,
   time: undefined,
 };
+
+const backgroundGenerator = function () {
+  if (
+    weatherData.weather === "FEW CLOUDS" ||
+    weatherData.weather === "SCATTERED CLOUDS" ||
+    weatherData.weather === "BROKEN CLOUDS"
+  ) {
+    document.querySelector("body").style.backgroundImage =
+      "url('images/pexels-pixabay-531756.jpg')";
+  } else if (weatherData.weather === "CLEAR SKY") {
+    document.querySelector("body").style.backgroundImage =
+      "url('images/pexels-francesco-ungaro-281260.jpg')";
+  } else if (
+    weatherData.weather === "SHOWER RAIN" ||
+    weatherData.weather === "RAIN"
+  ) {
+    document.querySelector("body").style.backgroundImage =
+      "url('images/pexels-josh-sorenson-1154510.jpg')";
+  } else if (weatherData.weather === "THUNDERSTORM") {
+    document.querySelector("body").style.backgroundImage =
+      "url('images/pexels-andre-furtado-1162251.jpg')";
+  } else if (weatherData.weather === "SNOW") {
+    document.querySelector("body").style.backgroundImage =
+      "url('images/pexels-simon-berger-3462588.jpg')";
+  } else if (weatherData.weather === "MIST") {
+    document.querySelector("body").style.backgroundImage =
+      "url('images/pexels-vlad-bagacian-1061623.jpg')";
+  }
+};
+backgroundGenerator();
+
 // Fetch request for weather Data
 const fetchRequest = function () {
   fetch(
@@ -37,6 +68,7 @@ const fetchRequest = function () {
       });
       weatherData.date = `${formattedDate}`;
       weatherData.time = `${formattedTime}`;
+      backgroundGenerator();
       pushInformationToPage.pushInfo();
       fetch(
         `https://api.openweathermap.org/data/2.5/forecast?q=${weatherData.place}&appid=01140b4c9927771a31d8304a92387fdb`,
@@ -180,14 +212,3 @@ const helperMessageRemove = () => {
 };
 const interval = setInterval(helperMessageAppear, 5000);
 const removeInterval = setInterval(helperMessageRemove, 15000);
-
-const backgroundGenerator = function () {
-  if (
-    weatherData.weather === "FEW CLOUDS" ||
-    weatherData.weather === "SCATTERED CLOUDS" ||
-    weatherData.weather === "BROKEN CLOUDS"
-  ) {
-    document.querySelector("body").style.backgroundImage =
-      "url('images/pexels-pixabay-531756.jpg')";
-  }else if(weatherData.weather === "CLEAR SKY")
-};
