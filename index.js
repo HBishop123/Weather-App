@@ -49,7 +49,6 @@ const fetchRequest = function () {
   )
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       weatherData.place = data.name;
       weatherData.weather = data.weather[0].main.toUpperCase();
       weatherData.temperature =
@@ -76,6 +75,7 @@ const fetchRequest = function () {
       )
         .then((response) => response.json())
         .then((data) => {
+          console.log(data)
           weatherData.chanceOfRain = data.list[0].pop + "%";
           pushInformationToPage.pushInfo();
         });
