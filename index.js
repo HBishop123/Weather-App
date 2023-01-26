@@ -20,9 +20,14 @@ const backgroundGenerator = function () {
   ) {
     document.querySelector("body").style.backgroundImage =
       "url('images/pexels-pixabay-531756.jpg')";
-  } else if (weatherData.weather === "CLEAR SKY") {
+    document.querySelector("body").style.color = "black";
+  } else if (
+    weatherData.weather === "CLEAR SKY" ||
+    weatherData.weather === "CLEAR"
+  ) {
     document.querySelector("body").style.backgroundImage =
       "url('images/pexels-francesco-ungaro-281260.jpg')";
+    document.querySelector("body").style.color = "black";
   } else if (
     weatherData.weather === "SHOWER RAIN" ||
     weatherData.weather === "RAIN" ||
@@ -30,15 +35,22 @@ const backgroundGenerator = function () {
   ) {
     document.querySelector("body").style.backgroundImage =
       "url('images/pexels-josh-sorenson-1154510.jpg')";
+    document.querySelector("body").style.color = "white";
   } else if (weatherData.weather === "THUNDERSTORM") {
     document.querySelector("body").style.backgroundImage =
       "url('images/pexels-andre-furtado-1162251.jpg')";
+    document.querySelector("body").style.color = "white";
   } else if (weatherData.weather === "SNOW") {
     document.querySelector("body").style.backgroundImage =
       "url('images/pexels-simon-berger-3462588.jpg')";
-  } else if (weatherData.weather === "MIST") {
+    document.querySelector("body").style.color = "black";
+  } else if (
+    weatherData.weather === "MIST" ||
+    weatherData.weather === "SMOKE"
+  ) {
     document.querySelector("body").style.backgroundImage =
       "url('images/pexels-vlad-bagacian-1061623.jpg')";
+    document.querySelector("body").style.color = "black";
   }
 };
 
