@@ -68,22 +68,21 @@ const fetchRequest = function () {
       });
       weatherData.date = `${formattedDate}`;
       weatherData.time = `${formattedTime}`;
-      
-      const splitTime = weatherData.time.split(":")
-      const hoursThree = parseInt(splitTime[0]) + 3;
-      const hoursSix = parseInt(splitTime[0]) + 6;
-      const hoursNine = parseInt(splitTime[0]) + 9;
-      const hoursTwelve = parseInt(splitTime[0]) + 12;
-      const minutes = splitTime[1]
 
-      dailyData.threeHourTime = hoursThree + ':' + minutes
-      dailyData.sixHourTime = hoursSix + ':' + minutes
-      dailyData.nineHourTime = hoursNine + ':' + minutes
-      dailyData.twelveHourTime = hoursTwelve + ':' + minutes
-
+      function editTime(number) {
+        const splitTime = weatherData.time.split(":");
+        let hours = parseInt(splitTime[0]) + number;
+        const minutes = splitTime[1];
+        hours = hours >= 24 ? hours % 24 : hours;
+        return `${hours}:${minutes}`;
+      }
+      dailyData.threeHourTime = editTime(3);
+      dailyData.sixHourTime = editTime(6);
+      dailyData.nineHourTime = editTime(9);
+      dailyData.twelveHourTime = editTime(12);
 
       backgroundGenerator();
-      pushInformationToPage.pushInfo()
+      pushInformationToPage.pushInfo();
 
       fetch(
         `https://api.openweathermap.org/data/2.5/forecast?q=${weatherData.place}&appid=01140b4c9927771a31d8304a92387fdb`,
@@ -109,7 +108,7 @@ const fetchRequest = function () {
 fetchRequest();
 setInterval(() => {
   fetchRequest();
-  fetchDailyData()
+  fetchDailyData();
 }, 30000);
 
 // takes the information from the weatherData objecft and appends it to elements innerHTML
@@ -155,7 +154,6 @@ dailyData = {
   nineHourTime: undefined,
   twelveHourTime: undefined,
 };
-console.log(dailyData)
 
 // fetiching data for the next 12 hours of temperature and pushing it to page
 const fetchDailyData = function () {
@@ -201,17 +199,17 @@ const pushDailyDataToPage = {
     const twelveHourTemp = document.getElementById("temp4");
     twelveHourTemp.innerHTML = dailyData.twelveHourTemp;
 
-    const threeHourTime = document.getElementById('3-hours')
-    threeHourTime.innerHTML = dailyData.threeHourTime
+    const threeHourTime = document.getElementById("3-hours");
+    threeHourTime.innerHTML = dailyData.threeHourTime;
 
-    const sixHourTime = document.getElementById('6-hours')
-    sixHourTime.innerHTML = dailyData.sixHourTime
+    const sixHourTime = document.getElementById("6-hours");
+    sixHourTime.innerHTML = dailyData.sixHourTime;
 
-    const nineHourTime = document.getElementById('9-hours')
-    nineHourTime.innerHTML = dailyData.nineHourTime
+    const nineHourTime = document.getElementById("9-hours");
+    nineHourTime.innerHTML = dailyData.nineHourTime;
 
-    const twelveHourTime = document.getElementById('12-hours')
-    twelveHourTime.innerHTML = dailyData.twelveHourTime
+    const twelveHourTime = document.getElementById("12-hours");
+    twelveHourTime.innerHTML = dailyData.twelveHourTime;
   },
 };
 
