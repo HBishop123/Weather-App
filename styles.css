@@ -164,8 +164,12 @@ button {
   border-right: 2px solid black;
   margin-top: 10px;
   transform: rotate(90deg);
-}
+ }
 
+ button > img{
+  height: 25px;
+  width: 25px;
+ }
 button:hover {
   cursor: pointer;
 }
