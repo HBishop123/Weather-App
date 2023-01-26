@@ -148,6 +148,10 @@ input::placeholder {
   color: black;
 }
 
+.white-placeholder::placeholder{
+  color: white;
+}
+
 button {
   height: 25px;
   width: 25px;

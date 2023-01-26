@@ -11,6 +11,7 @@ weatherData = {
   time: undefined,
 };
 
+// function that edits the display based off of the weather
 const backgroundGenerator = function () {
   if (
     weatherData.weather === "FEW CLOUDS" ||
@@ -21,6 +22,11 @@ const backgroundGenerator = function () {
     document.querySelector("body").style.backgroundImage =
       "url('images/pexels-pixabay-531756.jpg')";
     document.querySelector("body").style.color = "black";
+    document.querySelector("form > input").style.borderBottom =
+      "2px solid black";
+    document.querySelector("button").style.borderRight = "2px solid black";
+    document.querySelector("#search-bar").classList.remove("white-placeholder");
+    document.getElementById("search-bar").style.color = "black";
   } else if (
     weatherData.weather === "CLEAR SKY" ||
     weatherData.weather === "CLEAR"
@@ -28,6 +34,11 @@ const backgroundGenerator = function () {
     document.querySelector("body").style.backgroundImage =
       "url('images/pexels-francesco-ungaro-281260.jpg')";
     document.querySelector("body").style.color = "black";
+    document.querySelector("form > input").style.borderBottom =
+      "2px solid black";
+    document.querySelector("button").style.borderRight = "2px solid black";
+    document.querySelector("#search-bar").classList.remove("white-placeholder");
+    document.getElementById("search-bar").style.color = "black";
   } else if (
     weatherData.weather === "SHOWER RAIN" ||
     weatherData.weather === "RAIN" ||
@@ -36,14 +47,29 @@ const backgroundGenerator = function () {
     document.querySelector("body").style.backgroundImage =
       "url('images/pexels-josh-sorenson-1154510.jpg')";
     document.querySelector("body").style.color = "white";
+    document.querySelector("form > input").style.borderBottom =
+      "2px solid white";
+    document.querySelector("button").style.borderRight = "2px solid white";
+    document.querySelector("#search-bar").classList.add("white-placeholder");
+    document.getElementById("search-bar").style.color = "white";
   } else if (weatherData.weather === "THUNDERSTORM") {
     document.querySelector("body").style.backgroundImage =
       "url('images/pexels-andre-furtado-1162251.jpg')";
     document.querySelector("body").style.color = "white";
+    document.querySelector("form > input").style.borderBottom =
+      "2px solid white";
+    document.querySelector("button").style.borderRight = "2px solid white";
+    document.querySelector("#search-bar").classList.add("white-placeholder");
+    document.getElementById("search-bar").style.color = "white";
   } else if (weatherData.weather === "SNOW") {
     document.querySelector("body").style.backgroundImage =
       "url('images/pexels-simon-berger-3462588.jpg')";
     document.querySelector("body").style.color = "black";
+    document.querySelector("form > input").style.borderBottom =
+      "2px solid black";
+    document.querySelector("button").style.borderRight = "2px solid black";
+    document.querySelector("#search-bar").classList.remove("white-placeholder");
+    document.getElementById("search-bar").style.color = "black";
   } else if (
     weatherData.weather === "MIST" ||
     weatherData.weather === "SMOKE"
@@ -51,6 +77,11 @@ const backgroundGenerator = function () {
     document.querySelector("body").style.backgroundImage =
       "url('images/pexels-vlad-bagacian-1061623.jpg')";
     document.querySelector("body").style.color = "black";
+    document.querySelector("form > input").style.borderBottom =
+      "2px solid black";
+    document.querySelector("button").style.borderRight = "2px solid black";
+    document.querySelector("#search-bar").classList.remove("white-placeholder");
+    document.getElementById("search-bar").style.color = "black";
   }
 };
 
