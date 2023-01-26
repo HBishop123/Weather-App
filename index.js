@@ -68,8 +68,23 @@ const fetchRequest = function () {
       });
       weatherData.date = `${formattedDate}`;
       weatherData.time = `${formattedTime}`;
+      
+      const splitTime = weatherData.time.split(":")
+      const hoursThree = parseInt(splitTime[0]) + 3;
+      const hoursSix = parseInt(splitTime[0]) + 6;
+      const hoursNine = parseInt(splitTime[0]) + 9;
+      const hoursTwelve = parseInt(splitTime[0]) + 12;
+      const minutes = splitTime[1]
+
+      dailyData.threeHourTime = hoursThree + ':' + minutes
+      dailyData.sixHourTime = hoursSix + ':' + minutes
+      dailyData.nineHourTime = hoursNine + ':' + minutes
+      dailyData.twelveHourTime = hoursTwelve + ':' + minutes
+
+
       backgroundGenerator();
-      pushInformationToPage.pushInfo();
+      pushInformationToPage.pushInfo()
+
       fetch(
         `https://api.openweathermap.org/data/2.5/forecast?q=${weatherData.place}&appid=01140b4c9927771a31d8304a92387fdb`,
         { mode: "cors" }
@@ -90,11 +105,11 @@ const fetchRequest = function () {
     });
 };
 
-
 // calls the fetchRequest function when page launched, as well as every 30 seconds
 fetchRequest();
 setInterval(() => {
   fetchRequest();
+  fetchDailyData()
 }, 30000);
 
 // takes the information from the weatherData objecft and appends it to elements innerHTML
@@ -134,10 +149,15 @@ dailyData = {
   sixHourTemp: undefined,
   nineHourTemp: undefined,
   twelveHourTemp: undefined,
+
+  threeHourTime: undefined,
+  sixHourTime: undefined,
+  nineHourTime: undefined,
+  twelveHourTime: undefined,
 };
-console.log(dailyData);
+console.log(dailyData)
 
-
+// fetiching data for the next 12 hours of temperature and pushing it to page
 const fetchDailyData = function () {
   fetch(
     `https://api.openweathermap.org/data/2.5/forecast?q=${weatherData.place}&appid=01140b4c9927771a31d8304a92387fdb`,
@@ -145,12 +165,15 @@ const fetchDailyData = function () {
   )
     .then((response) => response.json())
     .then((data) => {
-      console.log(data)
-      dailyData.threeHourTemp = parseFloat((data.list[0].main.temp - 273.15).toFixed(2)) + "°C";
-      dailyData.sixHourTemp = parseFloat((data.list[1].main.temp - 273.15).toFixed(2)) + "°C";
-      dailyData.nineHourTemp = parseFloat((data.list[2].main.temp - 273.15).toFixed(2)) + "°C";
-      dailyData.twelveHourTemp = parseFloat((data.list[3].main.temp - 273.15).toFixed(2)) + "°C";
-      pushDailyDataToPage.pushInfo()
+      dailyData.threeHourTemp =
+        parseFloat((data.list[0].main.temp - 273.15).toFixed(2)) + "°C";
+      dailyData.sixHourTemp =
+        parseFloat((data.list[1].main.temp - 273.15).toFixed(2)) + "°C";
+      dailyData.nineHourTemp =
+        parseFloat((data.list[2].main.temp - 273.15).toFixed(2)) + "°C";
+      dailyData.twelveHourTemp =
+        parseFloat((data.list[3].main.temp - 273.15).toFixed(2)) + "°C";
+      pushDailyDataToPage.pushInfo();
     })
     .catch(() => {
       const errorMessage = document.getElementById("error");
@@ -161,25 +184,36 @@ const fetchDailyData = function () {
       }, 5000);
     });
 };
-fetchDailyData()
+fetchDailyData();
 
+// pushes data from above to the page
 const pushDailyDataToPage = {
   pushInfo: function () {
-    const threeHourTemp = document.getElementById('temp1')
-    threeHourTemp.innerHTML = dailyData.threeHourTemp
+    const threeHourTemp = document.getElementById("temp1");
+    threeHourTemp.innerHTML = dailyData.threeHourTemp;
 
-    const sixHourTemp = document.getElementById('temp2')
-    sixHourTemp.innerHTML = dailyData.sixHourTemp
+    const sixHourTemp = document.getElementById("temp2");
+    sixHourTemp.innerHTML = dailyData.sixHourTemp;
 
-    const nineHourTemp = document.getElementById('temp3')
-    nineHourTemp.innerHTML = dailyData.nineHourTemp
+    const nineHourTemp = document.getElementById("temp3");
+    nineHourTemp.innerHTML = dailyData.nineHourTemp;
 
-    const twelveHourTemp = document.getElementById('temp4')
-    twelveHourTemp.innerHTML = dailyData.twelveHourTemp
+    const twelveHourTemp = document.getElementById("temp4");
+    twelveHourTemp.innerHTML = dailyData.twelveHourTemp;
+
+    const threeHourTime = document.getElementById('3-hours')
+    threeHourTime.innerHTML = dailyData.threeHourTime
+
+    const sixHourTime = document.getElementById('6-hours')
+    sixHourTime.innerHTML = dailyData.sixHourTime
+
+    const nineHourTime = document.getElementById('9-hours')
+    nineHourTime.innerHTML = dailyData.nineHourTime
+
+    const twelveHourTime = document.getElementById('12-hours')
+    twelveHourTime.innerHTML = dailyData.twelveHourTime
   },
 };
-
-
 
 // grabs input data from the search bar, changes the api request location and calls fetchRequest()
 const getInputData = {
@@ -191,7 +225,7 @@ const getInputData = {
     weatherData.place = chosenLocation;
     document.forms[0].reset();
     fetchRequest();
-    fetchDailyData()
+    fetchDailyData();
     return this.location;
   },
   attachEventListener: function () {
