@@ -15,7 +15,8 @@ const backgroundGenerator = function () {
   if (
     weatherData.weather === "FEW CLOUDS" ||
     weatherData.weather === "SCATTERED CLOUDS" ||
-    weatherData.weather === "BROKEN CLOUDS"
+    weatherData.weather === "BROKEN CLOUDS" ||
+    weatherData.weather === "CLOUDS"
   ) {
     document.querySelector("body").style.backgroundImage =
       "url('images/pexels-pixabay-531756.jpg')";
@@ -39,7 +40,6 @@ const backgroundGenerator = function () {
       "url('images/pexels-vlad-bagacian-1061623.jpg')";
   }
 };
-backgroundGenerator();
 
 // Fetch request for weather Data
 const fetchRequest = function () {
