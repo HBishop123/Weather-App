@@ -146,10 +146,10 @@ const fetchDailyData = function () {
     .then((response) => response.json())
     .then((data) => {
       console.log(data)
-      dailyData.threeHourTemp = data.list[0].main.temp;
-      dailyData.sixHourTemp = data.list[1].main.temp;
-      dailyData.nineHourTemp = data.list[2].main.temp;
-      dailyData.twelveHourTemp = data.list[3].main.temp;
+      dailyData.threeHourTemp = parseFloat((data.list[0].main.temp - 273.15).toFixed(2)) + "°C";
+      dailyData.sixHourTemp = parseFloat((data.list[1].main.temp - 273.15).toFixed(2)) + "°C";
+      dailyData.nineHourTemp = parseFloat((data.list[2].main.temp - 273.15).toFixed(2)) + "°C";
+      dailyData.twelveHourTemp = parseFloat((data.list[3].main.temp - 273.15).toFixed(2)) + "°C";
       pushDailyDataToPage.pushInfo()
     })
     .catch(() => {
