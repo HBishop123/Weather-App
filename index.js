@@ -27,7 +27,7 @@ const backgroundGenerator = function () {
     document.querySelector("button").style.borderRight = "2px solid black";
     document.querySelector("#search-bar").classList.remove("white-placeholder");
     document.getElementById("search-bar").style.color = "black";
-    document.querySelector('button > img').src = "images/magnify-24.png"
+    document.querySelector("button > img").src = "images/magnify-24.png";
   } else if (
     weatherData.weather === "CLEAR SKY" ||
     weatherData.weather === "CLEAR"
@@ -40,7 +40,7 @@ const backgroundGenerator = function () {
     document.querySelector("button").style.borderRight = "2px solid black";
     document.querySelector("#search-bar").classList.remove("white-placeholder");
     document.getElementById("search-bar").style.color = "black";
-    document.querySelector('button > img').src = "images/magnify-24.png"
+    document.querySelector("button > img").src = "images/magnify-24.png";
   } else if (
     weatherData.weather === "SHOWER RAIN" ||
     weatherData.weather === "RAIN" ||
@@ -54,7 +54,8 @@ const backgroundGenerator = function () {
     document.querySelector("button").style.borderRight = "2px solid white";
     document.querySelector("#search-bar").classList.add("white-placeholder");
     document.getElementById("search-bar").style.color = "white";
-    document.querySelector('button > img').src = 'images/icons8-magnifying-glass-64.png'
+    document.querySelector("button > img").src =
+      "images/icons8-magnifying-glass-64.png";
   } else if (weatherData.weather === "THUNDERSTORM") {
     document.querySelector("body").style.backgroundImage =
       "url('images/pexels-andre-furtado-1162251.jpg')";
@@ -64,7 +65,8 @@ const backgroundGenerator = function () {
     document.querySelector("button").style.borderRight = "2px solid white";
     document.querySelector("#search-bar").classList.add("white-placeholder");
     document.getElementById("search-bar").style.color = "white";
-    document.querySelector('button > img').src = 'images/icons8-magnifying-glass-64.png'
+    document.querySelector("button > img").src =
+      "images/icons8-magnifying-glass-64.png";
   } else if (weatherData.weather === "SNOW") {
     document.querySelector("body").style.backgroundImage =
       "url('images/pexels-simon-berger-3462588.jpg')";
@@ -74,7 +76,7 @@ const backgroundGenerator = function () {
     document.querySelector("button").style.borderRight = "2px solid black";
     document.querySelector("#search-bar").classList.remove("white-placeholder");
     document.getElementById("search-bar").style.color = "black";
-    document.querySelector('button > img').src = "images/magnify-24.png"
+    document.querySelector("button > img").src = "images/magnify-24.png";
   } else if (
     weatherData.weather === "MIST" ||
     weatherData.weather === "SMOKE"
@@ -87,7 +89,7 @@ const backgroundGenerator = function () {
     document.querySelector("button").style.borderRight = "2px solid black";
     document.querySelector("#search-bar").classList.remove("white-placeholder");
     document.getElementById("search-bar").style.color = "black";
-    document.querySelector('button > img').src = "images/magnify-24.png"
+    document.querySelector("button > img").src = "images/magnify-24.png";
   }
 };
 
